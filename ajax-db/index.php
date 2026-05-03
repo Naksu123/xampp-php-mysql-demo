@@ -1,40 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<h2> AJAX Database Demo </h2>
 
-<head>
-    <meta charset="UTF-8">
-    <title>AJAX Database Demo</title>
-    <script>
-        function fetchUsers() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("userTableBody").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("GET", "fetch.php", true);
-            xhttp.send();
-        }
-    </script>
-</head>
+<button onclick="loadData()">Load Users </button>
 
-<body>
-    <h2>AJAX Database Demo</h2>
-    <button onclick="fetchUsers()">Fetch Users</button>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody id="userTableBody">
-            <!-- Data will be loaded here -->
-        </tbody>
-    </table>
-    <br>
-    <a href="../index.php">Back to Home</a>
-</body>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    <tbody id="data"></tbody>
+</table>
 
-</html>
+<script>
+
+function loadData() {
+    fetch("fetch.php")
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("data").innerHTML = data;
+    })
+}
+</script>
+<br>
+<a href="../index.php">Back to Home</a>
