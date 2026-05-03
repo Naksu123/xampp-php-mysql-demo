@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>AJAX PHP Demo</title>
-    <script>
-        function sendName() {
-            var name = document.getElementById("name").value;
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    document.getElementById("response").innerHTML = this.responseText;
-                }
-            };
-            xhttp.open("POST", "process.php", true);
-            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xhttp.send("name=" + name);
-        }
-    </script>
-</head>
-<body>
-    <h2>AJAX PHP Demo</h2>
-    <input type="text" id="name" placeholder="Enter your name">
-    <button onclick="sendName()">Submit</button>
-    <div id="response"></div>
-    <br>
-    <a href="../index.php">Back to Home</a>
-</body>
-</html>
+<h2> AJAX PHP Demo </h2>
+
+<input type = "text" id="name" placeholder="Enter Name">
+<input type = "text" id="email" placeholder="Enter Email">
+<button onclick="sendData()">Send</button>
+
+<p id="result"></p>
+
+<script>
+    function sendData() {
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+
+    fetch("process.php", {
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: "name=" + name + "&email=" + email
+    })
+    .then(res => res.text())
+    .then(data => {
+        document.getElementById("result").innerText = data;
+    });
+    }
+</script>
