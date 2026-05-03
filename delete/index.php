@@ -17,6 +17,7 @@ if (isset($_GET['delete'])) {
 
 <table>
 <tr>
+    <th>ID</th>
     <th>Name</th>
     <th>Email</th>
     <th>Action</th>
@@ -28,8 +29,8 @@ while ($row = $result->fetch_assoc()) {
     echo "<td>" . $row['id'] . "</td>";
     echo "<td>" . $row['name'] . "</td>";
     echo "<td>" . $row['email'] . "</td>";
-    echo "<td><a href='?delete={$row['id']}'>Delete</a></td>
-</tr>";
+    echo "<td><a href='?delete={$row['id']}'>Delete</a></td>";
+    echo "</tr>";
 }
 ?>
 </table>
