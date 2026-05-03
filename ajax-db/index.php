@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>AJAX Database Demo</title>
     <script>
         function fetchUsers() {
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
+            xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     document.getElementById("userTableBody").innerHTML = this.responseText;
                 }
@@ -16,6 +17,7 @@
         }
     </script>
 </head>
+
 <body>
     <h2>AJAX Database Demo</h2>
     <button onclick="fetchUsers()">Fetch Users</button>
@@ -34,4 +36,5 @@
     <br>
     <a href="../index.php">Back to Home</a>
 </body>
+
 </html>
